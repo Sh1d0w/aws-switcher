@@ -10,13 +10,13 @@ const awsSwitchConfig = `${HOME}/.aws-switch.sh`;
 
 // Check if the aws config file exists
 try {
-	if (!Deno.statSync(awsConfigFile).isFile) {
-		console.error(`${awsConfigFile} does not exist`);
-		Deno.exit(1);
-	}
+    if (!Deno.statSync(awsConfigFile).isFile) {
+        console.error(`${awsConfigFile} does not exist`);
+        Deno.exit(1);
+    }
 } catch {
-	console.error(`${awsConfigFile} does not exist`);
-	Deno.exit(1);
+    console.error(`${awsConfigFile} does not exist`);
+    Deno.exit(1);
 }
 
 const awsConfig = Deno.readTextFileSync(awsConfigFile);
@@ -24,29 +24,29 @@ const awsConfig = Deno.readTextFileSync(awsConfigFile);
 const matches = awsConfig.match(profileRegex);
 
 if (!matches) {
-	console.log('No profiles found.');
-	console.log(
-		'Refer to this guide for help on setting up a new AWS profile:',
-	);
-	console.log(
-		'https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html',
-	);
+    console.log('No profiles found.');
+    console.log(
+        'Refer to this guide for help on setting up a new AWS profile:',
+    );
+    console.log(
+        'https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html',
+    );
 
-	Deno.exit(1);
+    Deno.exit(1);
 }
 
 const profiles = matches.map((match) => {
-	return match.replace(bracketsRemovalRegx, '');
+    return match.replace(bracketsRemovalRegx, '');
 });
 
 if (!profiles.includes(defaultProfileChoice)) {
-	profiles.push(defaultProfileChoice);
+    profiles.push(defaultProfileChoice);
 }
 
 const ret = await select({
-	message: 'Choose a profile',
-	options: profiles,
-	default: Deno.env.get('AWS_PROFILE') || defaultProfileChoice,
+    message: 'Choose a profile',
+    options: profiles,
+    default: Deno.env.get('AWS_PROFILE') || defaultProfileChoice,
 });
 
 // Write to file

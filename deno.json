@@ -16,7 +16,7 @@
       "include": ["cli.ts"]
     },
     "options": {
-      "useTabs": true,
+      "useTabs": false,
       "lineWidth": 80,
       "indentWidth": 4,
       "singleQuote": true,
