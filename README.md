@@ -15,7 +15,7 @@ First you need to have [Deno](https://deno.land/manual/getting_started/installat
 After that to install the cli tool:
 
 ```
-deno install --unstable --allow-env=HOME,AWS_PROFILE,TERM_PROGRAM --allow-read="$HOME/.aws/config" --allow-write="$HOME/.aws-switch.sh" --name=aws-switch cli.ts
+deno install --unstable --allow-env=HOME,AWS_PROFILE,TERM_PROGRAM --allow-read="$HOME/.aws/config" --allow-write="$HOME/.aws-switch.sh" --name=aws-switch https://raw.githubusercontent.com/Sh1d0w/aws-switcher/main/cli.ts
 ```
 
 Add an alias to your bash:
