@@ -1,1 +1,1 @@
-export { select } from "https://deno.land/x/inquirer@v0.0.4/mod.ts";
+export { Select } from "https://deno.land/x/cliffy@v0.25.5/prompt/mod.ts";
